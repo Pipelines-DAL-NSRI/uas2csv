@@ -1,0 +1,5 @@
+Package: uas2csv
+Type: Package
+Title: Merges and widens files from ForenSeq UAS 
+Version: 0.0.1.0
+RoxygenNote: 7.3.2
