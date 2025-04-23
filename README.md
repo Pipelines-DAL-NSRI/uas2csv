@@ -11,7 +11,9 @@ uas2csv(file = files, reference = TRUE, population = metadata)
 
 ## Parameters
 @param *files* should be a zipped file containing the typed data with 3 columns: [1] Sample column, [2] markers column, and [3] alleles. See sample.zip that contains the files.
+
 @param *reference* should be set to TRUE if population metadata is needed.
+
 @param *population* is either an xlsx or csv file containing the metadata of the samples. A sample column similar to the *files* should be present. Column name should also be "Sample"
 
 ## Usage
