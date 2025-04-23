@@ -1,17 +1,25 @@
 #' Merge and widen files generated from ForenSeq UAS and export as a single CSV file
 #' 
-#' @param files is a zipped or tar file containing all individual/group reports
+#' @param files is a zipped or tar file containing all individual/group reports for a specific type of marker in an excel file. See the sample zipped file.
 #' @param population is a csv or excel file containing the metadata. It should have a "Sample" header.
 #' @param reference indicates if there is a "population" input. Should be set to TRUE if metadata is uploaded. Default is FALSE.
 #' @examples
 #' uas2csv(file = "files.zip", population = "metadata.xlsx", reference = TRUE)
 #' @example uas2csv(files = "mydata.tar")
+#' @import tools
+#' @import utils
+#' @import readxl
+#' @import stats
+#' @import dplyr
+#' @import purrr
+#' @import tidyr
+#' @import readr
 #' @export
 
 uas2csv <- function(files = files, population = pop_file, reference = FALSE){
    
    if(!file.exists(files)){
-      report::report("File does not exist in the working directory")
+      stop("File does not exist in the working directory")
    } else {
    
    if(tools::file_ext(files) == "zip"){
@@ -110,7 +118,7 @@ uas2csv <- function(files = files, population = pop_file, reference = FALSE){
       corrected <- data.frame(Samples, corrected)
       
    } else {
-      report::report("Not a zipped file. Accepted are zipped and tar files")
+      stop("Not a zipped file. Accepted are zipped and tar files")
    }
       
       if(reference == FALSE){
@@ -122,7 +130,7 @@ uas2csv <- function(files = files, population = pop_file, reference = FALSE){
          } else if(tools::file_ext(population) == "xlsx"){
             pop_data <- readxl::read_excel(population)
          } else {
-            report::report("File is not a csv or xlsx file")
+            stop("File is not a csv or xlsx file")
          }
          
          matched <- corrected %>% dplyr::left_join(pop_data, by = "Sample")

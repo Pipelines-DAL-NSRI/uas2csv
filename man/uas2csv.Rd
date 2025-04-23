@@ -7,7 +7,7 @@
 uas2csv(files = files, population = pop_file, reference = FALSE)
 }
 \arguments{
-\item{files}{is a zipped or tar file containing all individual/group reports}
+\item{files}{is a zipped or tar file containing all individual/group reports for a specific type of marker in an excel file. See the sample zipped file.}
 
 \item{population}{is a csv or excel file containing the metadata. It should have a "Sample" header.}
 
