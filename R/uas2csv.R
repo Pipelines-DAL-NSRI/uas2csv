@@ -6,6 +6,7 @@
 #' @examples
 #' uas2csv(file = "files.zip", population = "metadata.xlsx", reference = TRUE)
 #' @example uas2csv(files = "mydata.tar")
+#' @import pacman
 #' @import tools
 #' @import utils
 #' @import readxl
@@ -17,6 +18,12 @@
 #' @export
 
 uas2csv <- function(files = files, population = pop_file, reference = FALSE){
+   
+   if(!require("pacman")) {
+      install.packages("pacman")
+   }
+   
+   pacman::p_load(tools, utils, readxl, stats, dplyr, purrr, tidyr, readr, install = TRUE)
    
    if(!file.exists(files)){
       stop("File does not exist in the working directory")

@@ -2,6 +2,7 @@
 
 export(uas2csv)
 import(dplyr)
+import(pacman)
 import(purrr)
 import(readr)
 import(readxl)
